@@ -4,10 +4,10 @@
 
 #### Description : create a Cookie Stand Admin app using Next.js and style using Tailwind CSS.
 
+### Setup
 
 
-
-### get start:
+#### get start:
 ```
 npm run dev
 ```
