@@ -1,5 +1,6 @@
 import React from 'react'
 import Form from './Form'
+import ReportTable from './ReportTable'
 
 export default function Main() {
   return (
@@ -8,7 +9,12 @@ export default function Main() {
         <Form />
 
       </div>
+      <div  class="relative overflow-x-auto m-20">
+        <ReportTable />
 
+        </div>
     </div>
+
+
   )
 }

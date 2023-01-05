@@ -15,5 +15,3 @@ export default function Home() {
     </main>
   )
 }
-
-// h-screen w-full bg-cover bg-center max-w-screen max-h-screen bg-[url('/assets/bgimage.png')]
