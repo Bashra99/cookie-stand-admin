@@ -18,7 +18,7 @@ export default function Form() {
         setFullReplyState(`location : ${location} , minCustomers : ${minCustomers} , maxCustomers : ${maxCustomers} , avgCookies : ${avgCookies}`)
     }
     return (
-        <div class="mb-60 mr-20 mt-10 ">
+        <div class="mb-60 mr-20 mt-10  dark:text-white ">
             <form
                 onSubmit={handleSubmit}>
                 <div class="lex flex-wrap mb-6 border-b border-orange-400 ">

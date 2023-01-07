@@ -3,18 +3,16 @@ import { Data } from './Data'
 
 export default function ReportTable() {
     
-    
     const hourTotals = Data.reduce((acc, location) => {
-        const locationName = Object.keys(location)[0];  
-        const locationData = Object.values(location)[0];
-        const locationTotal = locationData.reduce((acc, val) => acc + val, 0);
-        return {acc,[locationName]: locationTotal}},
-         {});
-    const total = Object.values(hourTotals).reduce((acc, val) => acc + val, 0);
-    const totalRow = {
-        'Total': Object.values(hourTotals)
-    }
-    const allData = [Data, totalRow];
+        const sales = location[Object.keys(location)[0]];
+        sales.forEach((sale, index) => {
+            if (acc[index] === undefined) {
+                acc[index] = 0;
+            }
+            acc[index] += sale;
+        });
+        return acc;
+    }, []);
    
 
     return (
@@ -42,18 +40,31 @@ export default function ReportTable() {
                 </thead>
                 <tbody>
                     {Data.map(row => {
-                                const total = row[Object.keys(row)[0]].reduce((acc, val) => acc + val, 0);
+                                const total = row[Object.keys(row)[0]].reduce((acc, sale) => acc + sale, 0);
+                                
                                 return (
-                                    <tr key={Object.keys(row)[0]}>
-                                        <td>{Object.keys(row)[0]}</td>
-                                        {row[Object.keys(row)[0]].map((cell, index) => (
-                                            <td key={index}>{cell}</td>
-                                        ))}
-                                        <td>{total} {}   </td>
+                                    <tr>
+                                        <td class="border border-black-100">{Object.keys(row)[0]}</td>
+                                        {row[Object.keys(row)[0]].map((sale) => <td class="border border-black-100">{sale}</td>)}
+
+                                        <td class="border border-black-100">{total}</td>
+                                        
+
+
                                     </tr>
                                 );
                             })}
                                     </tbody>
+                                                 <tfoot>
+                        <tr>
+                            <td class="border border-black-100" >Total</td>
+                            {hourTotals.map((total) => <td>{total}</td>)}
+                            <td class="border border-black-100">{hourTotals.reduce((acc, total) => acc + total, 0)}</td>
+                            
+                        </tr>
+                        </tfoot>
+
+
                    
             </table>
             ) : (
